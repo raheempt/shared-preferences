@@ -15,7 +15,7 @@ class _MyAppState extends State<MyApp> {
 
   static const String KEYNAME = 'name';
 
-  String nameValue = 'No value saved';
+  String nameValue = 'No value saved';  
 
   @override
   void initState() {
@@ -67,7 +67,6 @@ class _MyAppState extends State<MyApp> {
     final prefs = await SharedPreferences.getInstance();
     final getname = prefs.getString(KEYNAME);
           nameValue = getname ?? 'No value saved';
-
     setState(() {
       nameValue = getname ?? 'No value saved';
     });
