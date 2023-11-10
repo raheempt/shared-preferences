@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
                     nameValue = name; 
                   });
                 },
-                child: Text('Save'),
+                child: Text('singin'),
               ),
               SizedBox(
                 height: 10,
