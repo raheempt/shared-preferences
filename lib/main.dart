@@ -7,15 +7,15 @@ void main() {
 
 class MyApp extends StatefulWidget {
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<MyApp> createState() => _MyAppState();  
 }
 
 class _MyAppState extends State<MyApp> {
   final nameController = TextEditingController();
 
-  static const String KEYNAME = 'name';
+   String KEYNAME = 'name';
 
-  String nameValue = 'No value saved';  
+  String nameValue = 'No value saved';
 
   @override
   void initState() {
@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Container(
           child: Column(
@@ -47,10 +48,10 @@ class _MyAppState extends State<MyApp> {
                   final prefs = await SharedPreferences.getInstance();
                   prefs.setString(KEYNAME, name);
                   setState(() {
-                    nameValue = name; 
+                    nameValue = name;
                   });
                 },
-                child: Text('Save'),
+                child: Text('Saved'),
               ),
               SizedBox(
                 height: 10,
@@ -66,11 +67,84 @@ class _MyAppState extends State<MyApp> {
   void getValue() async {
     final prefs = await SharedPreferences.getInstance();
     final getname = prefs.getString(KEYNAME);
-          nameValue = getname ?? 'No value saved';
+    nameValue = getname ?? 'No value saved';
     setState(() {
       nameValue = getname ?? 'No value saved';
     });
   }
 }
+
+
+// import 'package:flutter/material.dart';
+//  import 'package:shared_preferences/shared_preferences.dart';
+
+//  void main(){
+//   runApp(MyApp());
+//  }
+
+//  class MyApp extends StatefulWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   State<MyApp> createState() => _MyAppState();
+// }
+
+// class _MyAppState extends State<MyApp> {
+//   final namecondrollar= TextEditingController();
+  
+//   String KEY = 'key';
+
+//  String value = 'no value';
+
+//  @override
+//   void initState() {
+//     super.initState();
+//     getvalue();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         body: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             TextFormField(
+//               controller: namecondrollar,
+//               decoration: InputDecoration(
+//                 labelText: 'name',
+//                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))
+//               ),
+//             ),
+//             ElevatedButton(onPressed: ()async{
+//               final name = namecondrollar.text.toString();
+//               final prf = await SharedPreferences.getInstance();
+//               prf.setString(KEY, 'Key');
+//               setState(() {
+//                value = name;
+//               });
+//             },
+//              child: Text('save')),
+//              Text(value)
+//           ],
+//         ),
+//       ),
+//     );  
+//   }
+
+
+// void getvalue() async{
+// final prf = await SharedPreferences.getInstance();
+// final getname = prf.getString(KEY);
+//   value = getname ?? 'No value saved';
+
+// setState(() {
+//  value = getname ?? 'No value saved';
+
+// });
+
+// }
+
+// }
 
 
